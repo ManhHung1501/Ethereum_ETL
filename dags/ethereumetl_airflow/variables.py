@@ -3,9 +3,7 @@ from datetime import datetime
 
 from airflow.models import Variable
 
-def get_project_directory() -> str:
-    return os.path.abspath(os.path.join(__file__, "../../.."))
-project_dir = get_project_directory()
+
 
 def read_var(var_name, var_prefix=None, required=False, **kwargs):
     full_var_name = f'{var_prefix}{var_name}' if var_prefix is not None else var_name
