@@ -6,6 +6,7 @@ DAG = build_export_dag(
     dag_id='ethereum_export_dag',
     **read_export_dag_vars(
         var_prefix='ethereum_',
+        provider_uris = 'https://base-rpc.publicnode.com',
         export_schedule_interval='0 8 * * *',
         export_start_date='2015-07-30',
         export_max_workers=10,
