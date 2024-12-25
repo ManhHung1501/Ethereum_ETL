@@ -87,6 +87,11 @@ def build_export_dag(
         logging.info('Calling copy_to_export_path({}, {})'.format(file_path, export_path))
         filename = os.path.basename(file_path)
 
+        # Check if bucket exists and create if not
+        if not storage_hook.check_for_bucket(output_bucket):
+            logging.info(f"Bucket {output_bucket} does not exist. Creating bucket.")
+            storage_hook.create_bucket(bucket_name=output_bucket)
+
         storage_hook.load_file(
             filename=file_path,
             bucket_name=output_bucket,
