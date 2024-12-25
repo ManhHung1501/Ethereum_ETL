@@ -38,6 +38,7 @@ def build_export_dag(
         export_batch_size=10,
         export_max_active_runs=None,
         export_retries=5,
+        tags=None,
         **kwargs
 ):
     default_dag_args = {
@@ -69,7 +70,8 @@ def build_export_dag(
         dag_id,
         schedule_interval=export_schedule_interval,
         default_args=default_dag_args,
-        max_active_runs=export_max_active_runs
+        max_active_runs=export_max_active_runs,
+        tags=tags,
     )
 
 
